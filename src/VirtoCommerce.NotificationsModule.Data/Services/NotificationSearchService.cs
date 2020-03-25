@@ -74,7 +74,8 @@ namespace VirtoCommerce.NotificationsModule.Data.Services
 
             if (!string.IsNullOrEmpty(criteria.NotificationType))
             {
-                query = query.Where(x => x.Type == GetNotificationType(criteria.NotificationType));
+                var effectiveNotificationType = GetNotificationType(criteria.NotificationType);
+                query = query.Where(x => x.Type == effectiveNotificationType);
             }
 
             if (!string.IsNullOrEmpty(criteria.TenantId))
